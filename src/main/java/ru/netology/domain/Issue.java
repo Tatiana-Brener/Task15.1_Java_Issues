@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 @AllArgsConstructor
@@ -19,6 +22,7 @@ public class Issue {
     private Set<String> assignee;
     private boolean open;
     private boolean closed;
+    private LocalDate issueDate;
 
     @Override
     public boolean equals(Object o) {
@@ -31,12 +35,13 @@ public class Issue {
                 Objects.equals(name, issue.name) &&
                 Objects.equals(author, issue.author) &&
                 Objects.equals(label, issue.label) &&
-                Objects.equals(assignee, issue.assignee);
+                Objects.equals(assignee, issue.assignee) &&
+                Objects.equals(issueDate, issue.issueDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, author, label, assignee, open, closed);
+        return Objects.hash(id, name, author, label, assignee, open, closed, issueDate);
     }
 
     @Override
@@ -49,16 +54,7 @@ public class Issue {
                 ", assignee=" + assignee +
                 ", open=" + open +
                 ", closed=" + closed +
+                ", issueDate=" + issueDate +
                 '}';
     }
-
-
-    //
-//    public boolean isOpen() {
-//        return open;
-//    }
-//
-//    public boolean isClosed() {
-//        return closed;
-//    }
 }
