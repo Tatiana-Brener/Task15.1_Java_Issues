@@ -17,6 +17,7 @@ public class IssueRepository {
     }
 
     public List<Issue> getAll() {
+
         return issues;
     }
 
