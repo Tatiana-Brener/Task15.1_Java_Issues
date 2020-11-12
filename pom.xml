@@ -59,11 +59,9 @@
                             <rules>
                                 <rule>
                                     <element>METHOD</element>
-<!--                                    <excludes>-->
-<!--                                        <exclude>ru.netology.domain.FlightProposal.equals(java.lang.Object)</exclude>-->
-<!--                                        <exclude>ru.netology.repository.FlightProposalRepository.findById(int)</exclude>-->
-<!--                                        <exclude>ru.netology.repository.FlightProposalRepository.removeById(int)</exclude>-->
-<!--                                    </excludes>-->
+                                    <excludes>
+                                        <exclude>ru.netology.domain.Issue.equals(java.lang.Object)</exclude>
+                                    </excludes>
                                     <limits>
                                         <limit>
                                             <counter>BRANCH</counter>
