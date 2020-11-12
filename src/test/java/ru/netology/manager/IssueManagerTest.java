@@ -173,15 +173,14 @@ class IssueManagerTest {
         doReturn(returned).when(repository).getAll();
 
         List<Issue> expected = List.of(secondIssue, firstIssue, fourthIssue, fifthIssue, thirdIssue);
-        List<Issue> actual = issueManager.sortByOldest(comparator.reversed());
+        List<Issue> actual = issueManager.sortByNewest(comparator);
 
         assertEquals(expected, actual);
     }
 
-//    тест на код, который не получается
     @Test
     public void shouldOpenIssueByIdIfExists() {
-        int id = 3;
+        int id = 5;
 
         List<Issue> returned = List.of(firstIssue, secondIssue, thirdIssue, fourthIssue, fifthIssue);
         doReturn(returned).when(repository).getAll();
@@ -201,6 +200,32 @@ class IssueManagerTest {
 
         boolean expected = false;
         boolean actual = issueManager.openIssueById(id);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldClosedIssueByIdIfExists() {
+        int id = 4;
+
+        List<Issue> returned = List.of(firstIssue, secondIssue, thirdIssue, fourthIssue, fifthIssue);
+        doReturn(returned).when(repository).getAll();
+
+        boolean expected = true;
+        boolean actual = issueManager.closedIssueById(id);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotClosedIssueByIdIfNotExists() {
+        int id = 22;
+
+        List<Issue> returned = List.of(firstIssue, secondIssue, thirdIssue, fourthIssue, fifthIssue);
+        doReturn(returned).when(repository).getAll();
+
+        boolean expected = false;
+        boolean actual = issueManager.closedIssueById(id);
 
         assertEquals(expected, actual);
     }
