@@ -67,13 +67,22 @@ public class IssueManager {
         return newestIssues;
     }
 
-//    прошу помочь разобраться с этим кодом
     public boolean openIssueById(int id) {
         for (Issue issue : repository.getAll()) {
-            if (issue.getId() == id && !issue.isOpen()) {
+            if (issue.getId() == id) {
                issue.setOpen(true);
+               return issue.isOpen();
             }
-            return issue.isOpen();
+        }
+        return false;
+    }
+
+    public boolean closedIssueById(int id) {
+        for (Issue issue : repository.getAll()) {
+            if (issue.getId() == id) {
+                issue.setClosed(true);
+                return issue.isClosed();
+            }
         }
         return false;
     }
