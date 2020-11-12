@@ -180,7 +180,7 @@ class IssueManagerTest {
 
 //    тест на код, который не получается
     @Test
-    public void shouldOpenIssueById() {
+    public void shouldOpenIssueByIdIfExists() {
         int id = 3;
 
         List<Issue> returned = List.of(firstIssue, secondIssue, thirdIssue, fourthIssue, fifthIssue);
@@ -190,6 +190,18 @@ class IssueManagerTest {
         boolean actual = issueManager.openIssueById(id);
 
         assertEquals(expected, actual);
+    }
 
+    @Test
+    public void shouldNotOpenIssueByIdIfNotExists() {
+        int id = 33;
+
+        List<Issue> returned = List.of(firstIssue, secondIssue, thirdIssue, fourthIssue, fifthIssue);
+        doReturn(returned).when(repository).getAll();
+
+        boolean expected = false;
+        boolean actual = issueManager.openIssueById(id);
+
+        assertEquals(expected, actual);
     }
 }
